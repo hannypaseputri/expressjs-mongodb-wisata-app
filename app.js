@@ -2,9 +2,10 @@ const express = require("express");
 const app = express();
 const config = require("./app/config");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 /** Import Router --> Here <-- */
 app.get("/", (req, res) => {
